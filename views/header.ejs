@@ -13,13 +13,17 @@
         <nav class='flex-row'>
           <div class='flex-row'>
             <p style="margin-right:1vw;">Member's Only</p>
-            <% if(user) {%>
-            <a href='/admin'>Become an Admin</a>
-            <a href='/'>Become a club member</a>
+            <% if(typeof user !== 'undefined') {%>
+              <%if(user.admin === false) {%>
+                <a href='/admin'>Become an Admin</a>
+                <%}%>
+                <%if(user.memberstatus !== "secret") {%>
+                  <a href='/member'>Become a member</a>
+                <%}%>
             <%}%>
           </div>
           <div class='acc-options'>
-            <% if(!user) {%>
+            <% if(typeof user === 'undefined') {%>
             <a href='/login'>Login</a>
             <a href='/sign-up'>Create an account</a>
             <%} else {%>

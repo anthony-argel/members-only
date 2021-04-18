@@ -63,3 +63,9 @@ nav {
 .post .message {
   font-size: 1vw;
 }
+
+.user-options {
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}

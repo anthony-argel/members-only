@@ -7,7 +7,7 @@ const Post = require('../models/post');
 
 exports.post_get_all = (req, res, next) => {
     Post.find()
-    .populate('User')
+    .populate('user')
     .exec((err, results) => {
         if(err) {return next(err);}
         res.render('index', {posts:results, user: req.user});
@@ -28,8 +28,6 @@ exports.post_post = [
     body('postmsg').trim().isLength({min:1}).withMessage('Message must not be empty.').escape(),
     (req,res, next) => {
         const errors = validationResult(req);
-        console.log("data below");
-        console.log(req.user);
         Post.findById(req.user.id).exec((err, result) => {
            if(err) {return next(err);}
             const newPost = new Post({

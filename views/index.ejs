@@ -4,6 +4,22 @@
       <div class='post'>
         <p class='title'><%= posts[i].title%></p><br>
         <p class='message'><%= posts[i].message%></p>
+        <%if(typeof user !== 'undefined') {%>
+          <%if(user.memberstatus === 'secret' || user.admin === true) {%>
+            <div class='user-options'>
+
+            
+            
+            <p><br/><br/>Posted by <%= posts[i].user.username%>, <%= posts[i].formatted_date%></p>
+            <%if(user.admin === true) {%>
+              <form method='POST' action=<%="/delete/" + posts[i]._id%>>
+                <br/><br/>
+                <button>Delete Post</button>
+              </form>
+              <%}%>
+            </div>
+          <%}%>
+        <%}%>
       </div>  
     <%}%>
   </div>
