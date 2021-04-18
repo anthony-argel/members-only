@@ -1,0 +1,28 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column h1 {
+  font-size: 2vw;
+  margin-bottom: 1vw;
+}
+
+.flex-column .form-group {
+  margin-bottom: 1vw;
+}
+
+.flex-column .form-group input, .flex-column .form-group textarea{
+  width: 30vw;
+}
+
+.flex-column .errors-list {
+  margin-top: 1vw;
+  font-size: 1.3vw;
+}
+
+.main-content {
+  min-height: 90vh;
+}

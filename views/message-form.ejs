@@ -1,0 +1,17 @@
+<%- include('header') %>
+    <div class='flex-column main-content'>
+        <h1><%= title %></h1>
+        <form action='/create' method='POST'>
+            <div class='form-group'>
+                <label for='title'>Title:</labelm><br/>
+                <input type='text' name='title' required='true' minlength="1">
+            </div>
+            <div class='form-group'>
+                <label for='postmsg'>Message</label><br/>
+                <textarea name='postmsg' rows='14' required='true'></textarea>
+            </div>
+            <button>Post</button>
+        </form>
+    </div>
+</body>
+</html>

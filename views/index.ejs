@@ -1,0 +1,25 @@
+<%- include('header') -%>
+<% if (user) {%>
+  <div class="flex-column">
+    <h1>WELCOME BACK <%= user.username %></h1>
+    <a href="/log-out">LOG OUT</a>
+  </div>
+<% } else { %>
+  <div class="flex-column">
+    <h1>please log in</h1>
+    <form action="/log-in" method="POST">
+      <div class="form-group">
+        <label for="username">Username</label><br>
+        <input name="username" type="text" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label><br>
+        <input name="password" type="password" />
+      </div>
+      <button>Log In</button>
+    </form>
+    <a href='/sign-up'>Create an account</a>
+  </div>
+<%}%>
+</body>
+</html>

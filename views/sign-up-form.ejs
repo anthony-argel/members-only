@@ -1,0 +1,28 @@
+<%- include('header') -%>
+        <div class="flex-column">
+            <h1><%=title %></h1>
+            <form class='flex-column' method='POST' action="">
+                <div class="form-group">
+                    <label for="username">Username:</label><br/>
+                    <input type="text" name="username" required='true'>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label><br/>
+                    <input type='password' name='password' required='true'>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label><br/>
+                    <input type='password' name='confirm-password' required='true'>
+                </div>
+                <button>Sign up</button>
+            </form>
+            <div class='errors-list'>
+                <ul>
+                    <% for(let i = 0; i < errors.length; i++) { %>
+                        <li><%=errors[i].msg%></li>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
