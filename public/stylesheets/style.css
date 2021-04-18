@@ -1,8 +1,29 @@
+html {
+  background-color: lightgray;
+}
 .flex-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.flex-row {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  background-color: rgb(1, 126, 1);
+  height: 3vh;
+  padding: 1vw;
+}
+
+.flex-row a{
+  text-decoration: none;
+  color:black;
+  margin-right:1vw;
 }
 
 .flex-column h1 {
@@ -25,4 +46,20 @@
 
 .main-content {
   min-height: 90vh;
+}
+
+.post {
+  width: 60vw;
+  padding: 1vw;
+  background-color: lightgreen;
+  border-radius: .2vw;
+  margin: 1vw 0;
+}
+
+.post .title {
+  font-size: 2vw;
+}
+
+.post .message {
+  font-size: 1vw;
 }

@@ -10,3 +10,21 @@
           </head>
     </head>
     <body>
+        <nav class='flex-row'>
+          <div class='flex-row'>
+            <p style="margin-right:1vw;">Member's Only</p>
+            <% if(user) {%>
+            <a href='/admin'>Become an Admin</a>
+            <a href='/'>Become a club member</a>
+            <%}%>
+          </div>
+          <div class='acc-options'>
+            <% if(!user) {%>
+            <a href='/login'>Login</a>
+            <a href='/sign-up'>Create an account</a>
+            <%} else {%>
+              <a href='/log-out'>Log out</a>
+              <a href='/create'>Create a post</a>
+            <%}%>
+          </div>
+        </nav>

@@ -1,25 +1,11 @@
 <%- include('header') -%>
-<% if (user) {%>
   <div class="flex-column">
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
+    <% if(typeof posts !== 'undefined') for(let i = 0; i < posts.length; i++) {%>
+      <div class='post'>
+        <p class='title'><%= posts[i].title%></p><br>
+        <p class='message'><%= posts[i].message%></p>
+      </div>  
+    <%}%>
   </div>
-<% } else { %>
-  <div class="flex-column">
-    <h1>please log in</h1>
-    <form action="/log-in" method="POST">
-      <div class="form-group">
-        <label for="username">Username</label><br>
-        <input name="username" type="text" />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label><br>
-        <input name="password" type="password" />
-      </div>
-      <button>Log In</button>
-    </form>
-    <a href='/sign-up'>Create an account</a>
-  </div>
-<%}%>
 </body>
 </html>

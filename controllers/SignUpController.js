@@ -24,7 +24,8 @@ exports.sign_up_post = [
           username: req.body.username,
           password: hashedPassword,
           joindate: DateTime.now(),
-          memberstatus: "normal"
+          memberstatus: "normal",
+          admin: false
         }).save(err => {
           if (err) { 
             return next(err);

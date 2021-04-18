@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bcrypt = require('bcryptjs');
+const { body,validationResult } = require('express-validator');
 
 require('dotenv').config()
 var passport = require('passport');
@@ -73,11 +74,27 @@ app.use(express.urlencoded({ extended: false }));
 
 // note, works here, but not if I put in index.js.
 app.post(
-  "/log-in",
+  "/login",
+  [
+  body('username').trim().isLength({min:3}).withMessage('username must be at least 3 characters long')
+  .isAlphanumeric().withMessage('username must only contain letters and numbers').escape(),
+  body('password').trim().isLength({min:8}).withMessage('password must be at least 8 characters long')
+  .isAlphanumeric().withMessage('password must only contain letters and numbers').escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()) {
+      res.render('login-form', {title:'Login', errors:errors.array()});
+    }
+    else {
+      next();
+    }
+  },
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/"
+    failureRedirect: "/login"
   })
+  ]  
 );
 
 app.use('/', indexRouter);
