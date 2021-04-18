@@ -6,6 +6,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bcrypt = require('bcryptjs');
 const { body,validationResult } = require('express-validator');
+var compression = require('compression');
+var helmet = require('helmet');
+
 
 require('dotenv').config()
 var passport = require('passport');
@@ -60,8 +63,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression()); //Compress all routes
+app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
